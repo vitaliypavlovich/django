@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dn4i@e2t^^x^et(5ftwffl2fo$_$@^+%b5q7g+1+605o%tzh6l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', None)
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'profiles',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +80,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "django",
         "USER": "django",
-        "PASSWORD": "django",
+        "PASSWORD": os.getenv('POSTGRES_PASSWORD',),
         "HOST": "localhost",
         "PORT": 5432,
     }
@@ -127,4 +129,31 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# https://docs.djangoproject.com/en/4.0/topics/logging/#examples
+LOGGING = {
+   'version': 1,
+   'disable_existing_loggers': False,
+   'handlers': {
+       'console': {
+           'class': 'logging.StreamHandler',
+           'formatter': 'simple',
+       },
+   },
+   'formatters': {
+       'simple': {'format': '%(levelname)s %(asctime)s %(message)s'},
+   },
+   'loggers': {
+       '': {
+           'handlers': ['console'],
+           'level': 'INFO',
+       },
+       'django.db.backends': {
+           'handlers': ['console'],
+           'level': 'ERROR',
+       }
+   }
+}
+
+MY_CUSTOM_VARIABLE = os.getenv('MY_CUSTOM_VARIABLE', None)
 
