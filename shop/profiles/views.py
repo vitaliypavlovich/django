@@ -17,7 +17,7 @@ def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            User.objects.create()
+            # User.objects.create()
             logger.info(f"User email: {form.cleaned_data['email']}")
             logger.info(f"User password: {form.cleaned_data['password']}")
             return redirect("/")
