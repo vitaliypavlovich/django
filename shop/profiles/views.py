@@ -26,7 +26,7 @@ def register_user(request):
                                 password=form.cleaned_data['password'])
             logger.info(f"User email: {form.cleaned_data['email']}")
             logger.info(f"User password: {form.cleaned_data['password']}")
-            return redirect("/")
+            return redirect("/register_profile")
     else:
         form = RegisterUserForm()
 
@@ -36,11 +36,12 @@ def register_profile(request):
     if request.method == 'POST':
         form = RegisterProfileForm(request.POST)
         if form.is_valid():
-            Profile.objects.create(first_name=form.cleaned_data['first_name'],
+            Profile.objects.create(user_id=User.id,
+                                   first_name=form.cleaned_data['first_name'],
                                    last_name=form.cleaned_data['last_name'],
                                    age=form.cleaned_data['age']
                                    )
-            return redirect('/')
+            return redirect('/admin')
     else:
         form = RegisterProfileForm()
 
