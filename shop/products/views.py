@@ -30,10 +30,12 @@ def add_product(request):
     if request.method == "POST":
         form = AddProductForm(request.POST)
         if form.is_valid():
-            # User.objects.create()
+            Product.objects.create(title=form.cleaned_data['title'],
+                                   price=form.cleaned_data['title'],
+                                   description=form.cleaned_data['description'])
             logger.info(f"Product name: {form.cleaned_data['title']}")
             logger.info(f"Product price: {form.cleaned_data['price']}")
-            return redirect("/")
+            return redirect("/admin")
     else:
         form = AddProductForm()
 
