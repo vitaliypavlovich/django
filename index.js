@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert(message);
     }
 
-    const button = document.getElementById("Submit");
+    const button = document.getElementById("submit");
 
     button.addEventListener("click", showMessage)
 });
