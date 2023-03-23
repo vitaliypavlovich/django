@@ -31,7 +31,7 @@ def add_product(request):
         form = AddProductForm(request.POST)
         if form.is_valid():
             Product.objects.create(title=form.cleaned_data['title'],
-                                   price=form.cleaned_data['title'],
+                                   price=form.cleaned_data['price'],
                                    description=form.cleaned_data['description'])
             logger.info(f"Product name: {form.cleaned_data['title']}")
             logger.info(f"Product price: {form.cleaned_data['price']}")
