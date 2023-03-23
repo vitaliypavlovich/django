@@ -1,3 +1,4 @@
 Django==4.1.7
 psycopg2-binary==2.9.5
 crispy-bootstrap5==0.7
+Pillow==9.4.0
