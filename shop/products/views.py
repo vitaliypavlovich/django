@@ -18,12 +18,7 @@ def index(request):
     if purchases__count is not None:
         products = products.filter(purchases__count=purchases__count)
 
-    # queryset = Product.objects.annotate(purchase__count=Count('purchases'))
-    # queryset = queryset.filter(purchase_count_gt=0)
-    # print(queryset.first().purchase_count)
-
-
-    return HttpResponse('<br>'.join([str(p) for p in products]))
+    return render(request, "index.html", {"products": products})
 
 
 def add_product(request):
