@@ -30,7 +30,7 @@ def add_product(request):
                                    description=form.cleaned_data['description'])
             logger.info(f"Product name: {form.cleaned_data['title']}")
             logger.info(f"Product price: {form.cleaned_data['price']}")
-            return redirect("/admin")
+            return redirect("/")
     else:
         form = AddProductForm()
 
