@@ -30,7 +30,7 @@ def register_user(request):
             )
             user.set_password(form.cleaned_data["password"])
             user.save()
-            return redirect("/login")
+            return redirect("/")
     else:
         form = RegisterUserForm()
 
@@ -45,7 +45,7 @@ def register_profile(request):
                                    last_name=form.cleaned_data['last_name'],
                                    age=form.cleaned_data['age']
                                    )
-            return redirect('/admin')
+            return redirect('/')
     else:
         form = RegisterProfileForm()
 
@@ -64,7 +64,7 @@ def login_view(request):
             if user is None:
                 return HttpResponse('BadRequest', status=400)
             login(request, user)
-            return redirect("/register_profile")
+            return redirect("/")
     else:
         form = LoginForm()
     return render(request, "login.html", {"form": form})
