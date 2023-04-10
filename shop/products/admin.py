@@ -9,10 +9,10 @@ class PurchaseAdminInline(admin.StackedInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-   list_display = ("title", 'image', "price", "description", 'color', "created_at")
-   fields = ("title", 'image', "price", "description", 'color', "created_at")
+   list_display = ("title", 'category', 'image', "price", "description", 'color', "created_at")
+   fields = ("title", 'category', 'image', "price", "description", 'color', "created_at")
    readonly_fields = ("created_at",)
-   search_fields = ("title", "price")
+   search_fields = ("title", 'category', "price")
    inlines = (PurchaseAdminInline,)
 
 @admin.register(Purchase)
