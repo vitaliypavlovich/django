@@ -18,7 +18,7 @@ class Command(BaseCommand):
                 "title": item["name"],
                 "price": item["price"],
                 "description": item["link"],
-                "excerpt": item["category"],
+                "category": item["category"],
             })
         dispatcher.connect(crawler_results, signal=signals.item_scraped)
 
