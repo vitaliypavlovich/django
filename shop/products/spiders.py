@@ -16,3 +16,7 @@ class OmaSpider(scrapy.Spider):
                 "link": f"{self.allowed_domains[0]}{product.css('a.area-link::attr(href)').get()}",
             }
             yield data
+
+        next_page = response.css(".page-nav_box .btn__nav-right").get()
+        if next_page is not None:
+            yield response.follow(next_page, callback=self.parse)
