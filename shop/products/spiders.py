@@ -3,7 +3,7 @@ import scrapy
 
 class OmaSpider(scrapy.Spider):
     name = "oma.by"
-    allowed_domains = ["https://www.oma.by"]
+    allowed_domains = ["www.oma.by"]
     start_urls = ["https://www.oma.by/elektroinstrument-c"]
 
     def parse(self, response, **kwargs):
@@ -17,6 +17,6 @@ class OmaSpider(scrapy.Spider):
             }
             yield data
 
-        next_page = response.css(".page-nav_box .btn__nav-right").get()
+        next_page = response.css(".page-nav_box .btn__page-nav:last-child::attr(href)").get()
         if next_page is not None:
             yield response.follow(next_page, callback=self.parse)
