@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import models
 
 
-COLOR_CHOICES =(
+COLOR_CHOICES = (
     ('RED', 'Red'),
     ('GREEN', 'Green'),
     ('BlUE', 'Blue'),
