@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+
 from products.models import Product
 from products.models import Purchase
 
@@ -17,7 +18,8 @@ class ProductAdmin(admin.ModelAdmin):
 
    def save_form(self, request, form, change):
 
-      return super().save_form(request, form, change)
+      return super().cache.clear()
+
 
 @admin.register(Purchase)
 class PurchaseAdmin(admin.ModelAdmin):

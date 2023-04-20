@@ -10,11 +10,11 @@ logger = logging.getLogger(__name__)
 
 
 def index(request):
-    title = request.GET.get('title')
-    purchases__count = request.GET.get('purchases__count')
-    result = cache.get(f"products-view-{title}-{purchases__count}")
-    if result is not None:
-        return result
+    # title = request.GET.get('title')
+    # purchases__count = request.GET.get('purchases__count')
+    # result = cache.get(f"products-view-{title}-{purchases__count}")
+    # if result is not None:
+    #     return result
 
     products = Product.objects.all()
     title = request.GET.get('title')
