@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'products',
     'crispy_forms',
     'crispy_bootstrap5',
+    'django_rq',
     'rest_framework',
     "rest_framework.authtoken",
 ]
@@ -92,6 +93,8 @@ DATABASES = {
         "PORT": 5432,
     }
 }
+
+
 REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')
 CACHES = {
     'default': {
@@ -100,6 +103,15 @@ CACHES = {
     }
 }
 
+
+RQ_QUEUES = {
+    'default': {
+       'HOST': REDIS_HOST,
+       'PORT': 6379,
+       'DB': 0,
+       'DEFAULT_TIMEOUT': 360,
+    },
+}
 
 
 
