@@ -12,6 +12,7 @@
    <p class="card-text">Color: {{ product.color }}</p>
    <p class="card-text">Price: {{ product.price }} BYN</p>
    <p class="card-text">Price: {{ product.price_usd }} USD</p>
+   <p class="card-text">Status: {{ product.status }}</p>
    <p class="card-text">Purchase: {% for purchase in product.purchases.all %} {{ purchase }} {% endfor %}</p>
  </div>
 </div>
