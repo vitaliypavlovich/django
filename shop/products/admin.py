@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.core.cache import cache
 
 from products.models import Product
 from products.models import Purchase
@@ -10,15 +10,15 @@ class PurchaseAdminInline(admin.StackedInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-   list_display = ("title", 'category', 'image', "price", "price_usd", "description", 'color', "created_at")
-   fields = ("title", 'category', 'image', "price", "price_usd", "description", 'color', "created_at")
+   list_display = ("title", 'category', 'image', "price", "price_usd", "description", 'color', 'status', "created_at")
+   fields = ("title", 'category', 'image', "price", "price_usd", "description", 'color', 'status', "created_at")
    readonly_fields = ("created_at",)
-   search_fields = ("title", 'category', "price", "price_usd",)
+   search_fields = ("title", 'category', "price", "price_usd", 'status',)
    inlines = (PurchaseAdminInline,)
 
    def save_form(self, request, form, change):
 
-      return super().cache.clear()
+      return super().save_form(request, form, change)
 
 
 @admin.register(Purchase)

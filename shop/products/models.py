@@ -10,6 +10,11 @@ COLOR_CHOICES = (
     ('BlUE', 'Blue'),
 )
 
+STATUS_CHOICES = (
+    ('IN_STOCK', 'In_stock'),
+    ('OUT_OF_STOCK', 'Out_of_stock'),
+)
+
 class Product(models.Model):
     external_id = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255)
@@ -19,6 +24,7 @@ class Product(models.Model):
     price_usd = models.DecimalField(default=Decimal("0"), decimal_places=5, max_digits=10)
     category = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    status = models.CharField(max_length=32, choices=STATUS_CHOICES, default='IN_STOCK')
     created_at = models.DateTimeField(
         auto_now_add=True, db_index=True
     )
