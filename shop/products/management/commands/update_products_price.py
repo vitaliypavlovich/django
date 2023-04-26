@@ -25,7 +25,7 @@ def update_products():
             product.save()
 
         Product.objects.update(
-            price_usd=F("price") * Decimal(item["Cur_OfficialRate"])
+            price_usd=F("price") / Decimal(item["Cur_OfficialRate"])
         )
 
 
