@@ -12,15 +12,29 @@ services:
    image: redis:latest
 
  django:
-   image: vitaliypavlovich/django:latest
+   image: aloaaa/django:latest
    ports:
      - "8000:8000"
    volumes:
-     - ./:/app/
+     - ./shop/:/app/
    depends_on:
      - postgres
    environment:
      - POSTGRES_HOST=postgres
      - POSTGRES_PASS=django
+     - REDIS_HOST=redis
    command: |
      python manage.py runserver 0.0.0.0:8000
+
+ worker:
+   image: aloaaa/django:latest
+   volumes:
+     - ./shop/:/app/
+   depends_on:
+     - postgres
+   environment:
+     - POSTGRES_HOST=postgres
+     - POSTGRES_PASS=django
+     - REDIS_HOST=redis
+   command: |
+     python manage.py rqworker
