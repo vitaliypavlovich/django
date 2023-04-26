@@ -33,4 +33,4 @@ class Command(BaseCommand):
     help = "Update products"
 
     def handle(self, *args, **options):
-        update_products()
+        update_products.delay()
