@@ -1,3 +1,4 @@
+import os
 from decimal import Decimal
 
 from django.conf import settings
@@ -31,6 +32,10 @@ class Product(models.Model):
 
     def __str__(self):
         return f'Product: {self.title} - {self.price}'
+
+    def delete(self, using=None, keep_parents=False):
+        os.remove(self.image.path)
+        super().delete(using, keep_parents)
 
 
 class Purchase(models.Model):

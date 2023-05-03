@@ -1,6 +1,4 @@
-import os
 import requests
-from shutil import rmtree
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
@@ -16,8 +14,6 @@ from django_rq import job
 
 @job
 def run_spider():
-    rmtree(settings.MEDIA_ROOT / 'products')
-    os.mkdir(settings.MEDIA_ROOT / 'products')
     Product.objects.all().delete()
 
     def crawler_results(signal, sender, item, response, spider):
