@@ -200,3 +200,12 @@ SECOND_SETTINGS = os.getenv('SECOND_SETTINGS', None)
 
 THIRD_SETTINGS = os.getenv('THIRD_SETTINGS', None)
 
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "PAGE_SIZE": 10,
+}
