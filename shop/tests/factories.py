@@ -24,8 +24,7 @@ class UserFactory(DjangoModelFactory):
     class Meta:
         model = Profile
 
-    first_name = factory.Faker('word')
-    last_name = factory.Faker('hello')
+    first_name = factory.Faker.name()
     age = randint(1, 50)
 
 
@@ -33,6 +32,6 @@ class PurchaseFactory(DjangoModelFactory):
     class Meta:
         model = Purchase
 
-    user = factory.Faker('word')
-    product = 'RED'
-    count = Decimal(290)
+    user = 'aloaaa'
+    product = 'Дрель-шуруповерт Werker EWCDL 814'
+    count = randint(1, 100)
