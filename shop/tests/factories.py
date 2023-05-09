@@ -20,6 +20,7 @@ class ProductFactory(DjangoModelFactory):
     price_usd = Decimal(100)
 
 
+
 class UserFactory(DjangoModelFactory):
     class Meta:
         model = Profile
