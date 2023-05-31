@@ -23,7 +23,7 @@ ROOT_DIR = BASE_DIR.parent
 SECRET_KEY = "my-super-secret-key"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('MY_DEBUG_VARIABLE') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
