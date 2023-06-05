@@ -25,9 +25,6 @@ class UserFactory(DjangoModelFactory):
     class Meta:
         model = Profile
 
-
-
-
 class PurchaseFactory(DjangoModelFactory):
     class Meta:
         model = Purchase
