@@ -25,8 +25,7 @@ class UserFactory(DjangoModelFactory):
     class Meta:
         model = Profile
 
-    first_name = factory.Faker.name()
-    age = randint(1, 50)
+
 
 
 class PurchaseFactory(DjangoModelFactory):
