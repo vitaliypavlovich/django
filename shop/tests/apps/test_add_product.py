@@ -14,10 +14,14 @@ class TestIndex:
         response = self.client.get("/add_product/:")
         assert response.status_code == 200
 
-        response = self.client.post("/add_product/:", data={
-            "title": "test",
-            "price": "1",
-            "description": "test",
-        }, follow=True)
+        response = self.client.post(
+            "/add_product/:",
+            data={
+                "title": "test",
+                "price": "1",
+                "description": "test",
+            },
+            follow=True,
+        )
         assert response.status_code == 200
         assert Product.objects.exists()

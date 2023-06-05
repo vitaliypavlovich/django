@@ -5,15 +5,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('products', '0006_product_excerpt'),
+        ("products", "0006_product_excerpt"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='price',
-            field=models.DecimalField(decimal_places=5, default=Decimal('0'), max_digits=10),
+            model_name="product",
+            name="price",
+            field=models.DecimalField(
+                decimal_places=5, default=Decimal("0"), max_digits=10
+            ),
         ),
     ]

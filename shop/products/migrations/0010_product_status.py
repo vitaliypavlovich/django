@@ -4,15 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('products', '0009_product_price_usd'),
+        ("products", "0009_product_price_usd"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='product',
-            name='status',
-            field=models.CharField(choices=[('IN_STOCK', 'in_stock'), ('OUT_OF_STOCK', 'out_of_stock')], default='IN_STOCK', max_length=32),
+            model_name="product",
+            name="status",
+            field=models.CharField(
+                choices=[("IN_STOCK", "in_stock"), ("OUT_OF_STOCK", "out_of_stock")],
+                default="IN_STOCK",
+                max_length=32,
+            ),
         ),
     ]

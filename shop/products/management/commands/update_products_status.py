@@ -13,7 +13,7 @@ def update_status():
     products = Product.objects.all()
     for product in products:
         if product.price == 0:
-            product.status = 'OUT_OF_STOCK'
+            product.status = "OUT_OF_STOCK"
             product.save()
 
 

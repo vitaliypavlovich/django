@@ -14,22 +14,27 @@ class TestProductAddApi:
         response = self.client.get("/api/products/")
         assert response.status_code == 200
 
-        response = self.client.post("/api/products/", data={
-            "title": "test",
-            "color": "RED",
-            "price": "12",
-            "description": "12345678",
-        }, follow=True)
+        response = self.client.post(
+            "/api/products/",
+            data={
+                "title": "test",
+                "color": "RED",
+                "price": "12",
+                "description": "12345678",
+            },
+            follow=True,
+        )
         assert response.status_code == 201
         assert Product.objects.exists()
 
     def test_delete_product(self):
-        product = Product.objects.create(title='test', color='RED', price='12', description='12345678')
+        product = Product.objects.create(
+            title="test", color="RED", price="12", description="12345678"
+        )
 
         response = self.client.get(f"/api/products/{product.id}/")
         assert response.status_code == 200
-        assert response.json()['title'] == 'test'
-
+        assert response.json()["title"] == "test"
 
         response = self.client.delete(f"/api/products/{product.id}/")
         assert response.status_code == 204

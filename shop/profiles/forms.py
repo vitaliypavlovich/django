@@ -4,9 +4,8 @@ from django import forms
 class RegisterUserForm(forms.Form):
     username = forms.CharField(max_length=20)
     email = forms.EmailField()
-    password = forms.CharField(
-        min_length=8, widget=forms.PasswordInput()
-    )
+    password = forms.CharField(min_length=8, widget=forms.PasswordInput())
+
 
 class RegisterProfileForm(forms.Form):
     first_name = forms.CharField(max_length=20)
@@ -16,6 +15,4 @@ class RegisterProfileForm(forms.Form):
 
 class LoginForm(forms.Form):
     email = forms.EmailField()
-    password = forms.CharField(
-        min_length=8, widget=forms.PasswordInput()
-    )
+    password = forms.CharField(min_length=8, widget=forms.PasswordInput())

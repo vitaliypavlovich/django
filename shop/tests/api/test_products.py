@@ -18,4 +18,4 @@ class TestProductsApi:
         ProductFactory.create_batch(10)
         response = self.client.get("/api/products/popular/")
         assert response.status_code == 200
-        assert response.json().get('count') == 10
+        assert response.json().get("count") == 10

@@ -26,7 +26,7 @@ def register_user(request):
         if form.is_valid():
             user = User(
                 email=form.cleaned_data["email"],
-                username=form.cleaned_data['email'],
+                username=form.cleaned_data["email"],
             )
             user.set_password(form.cleaned_data["password"])
             user.save()
@@ -36,20 +36,22 @@ def register_user(request):
 
     return render(request, "register_user.html", {"form": form})
 
+
 def register_profile(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = RegisterProfileForm(request.POST)
         if form.is_valid():
-            Profile.objects.create(user=request.user,
-                                   first_name=form.cleaned_data['first_name'],
-                                   last_name=form.cleaned_data['last_name'],
-                                   age=form.cleaned_data['age']
-                                   )
-            return redirect('/')
+            Profile.objects.create(
+                user=request.user,
+                first_name=form.cleaned_data["first_name"],
+                last_name=form.cleaned_data["last_name"],
+                age=form.cleaned_data["age"],
+            )
+            return redirect("/")
     else:
         form = RegisterProfileForm()
 
-    return render(request, 'register_profile.html', {'form': form})
+    return render(request, "register_profile.html", {"form": form})
 
 
 def login_view(request):
@@ -58,16 +60,17 @@ def login_view(request):
         if form.is_valid():
             user = authenticate(
                 request=request,
-                username=form.cleaned_data['email'],
-                password=form.cleaned_data['password']
+                username=form.cleaned_data["email"],
+                password=form.cleaned_data["password"],
             )
             if user is None:
-                return HttpResponse('BadRequest', status=400)
+                return HttpResponse("BadRequest", status=400)
             login(request, user)
             return redirect("/")
     else:
         form = LoginForm()
     return render(request, "login.html", {"form": form})
+
 
 def logout_view(request):
     logout(request)

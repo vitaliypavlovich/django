@@ -16,12 +16,14 @@ class OmaSpider(scrapy.Spider):
                 "name": product.attrib.get("data-ga-product-name").strip(),
                 "price": product.attrib.get("data-ga-product-price").strip(),
                 "category": product.attrib.get("data-ga-category-last").strip(),
-                'image_name': image_name,
+                "image_name": image_name,
                 "link": f"{self.allowed_domains[0]}{product.css('a.area-link::attr(href)').get()}",
             }
             yield data
 
-        next_page = response.css(".page-nav_box .btn__page-nav:last-child::attr(href)").get()
+        next_page = response.css(
+            ".page-nav_box .btn__page-nav:last-child::attr(href)"
+        ).get()
         if next_page is not None:
             self.current_page += 1
             if self.current_page == 2:

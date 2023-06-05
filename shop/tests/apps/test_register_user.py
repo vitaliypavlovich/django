@@ -12,10 +12,14 @@ class TestIndex:
         response = self.client.get("/register_user/")
         assert response.status_code == 200
 
-        response = self.client.post("/register_user/", data={
-            "username": "test",
-            "email": "test@test.com",
-            "password": "12345678",
-        }, follow=True)
+        response = self.client.post(
+            "/register_user/",
+            data={
+                "username": "test",
+                "email": "test@test.com",
+                "password": "12345678",
+            },
+            follow=True,
+        )
         assert response.status_code == 200
         assert User.objects.exists()

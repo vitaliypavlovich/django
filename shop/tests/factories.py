@@ -10,15 +10,15 @@ from profiles.models import Profile
 
 from random import randint
 
+
 class ProductFactory(DjangoModelFactory):
     class Meta:
         model = Product
 
-    title = factory.Faker('word')
-    color = 'RED'
+    title = factory.Faker("word")
+    color = "RED"
     price = Decimal(290)
     price_usd = Decimal(100)
-
 
 
 class UserFactory(DjangoModelFactory):
@@ -33,6 +33,6 @@ class PurchaseFactory(DjangoModelFactory):
     class Meta:
         model = Purchase
 
-    user = 'aloaaa'
-    product = 'Дрель-шуруповерт Werker EWCDL 814'
+    user = "aloaaa"
+    product = "Дрель-шуруповерт Werker EWCDL 814"
     count = randint(1, 100)

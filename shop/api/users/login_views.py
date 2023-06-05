@@ -16,8 +16,8 @@ class LoginView(CreateAPIView):
         serializer.is_valid(raise_exception=True)
         user = authenticate(
             request=request,
-            username=serializer.validated_data['email'],
-            password=serializer.validated_data['password'],
+            username=serializer.validated_data["email"],
+            password=serializer.validated_data["password"],
         )
         if user is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
