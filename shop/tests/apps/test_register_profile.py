@@ -17,7 +17,7 @@ class TestIndex:
         response = self.client.post("/register_profile/:", data={
             "first_name": "test",
             "last_name": "test",
-            "age": "1",
+            "age": "20",
         }, follow=True)
         assert response.status_code == 200
         assert Profile.objects.exists()
