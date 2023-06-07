@@ -1,13 +1,9 @@
 import factory
 
 from factory.django import DjangoModelFactory
-
 from products.models import Product, Purchase
-
 from decimal import Decimal
-
 from profiles.models import Profile
-
 from random import randint
 
 
@@ -25,10 +21,10 @@ class UserFactory(DjangoModelFactory):
     class Meta:
         model = Profile
 
+
 class PurchaseFactory(DjangoModelFactory):
     class Meta:
         model = Purchase
-
     user = "aloaaa"
     product = "Дрель-шуруповерт Werker EWCDL 814"
     count = randint(1, 100)
