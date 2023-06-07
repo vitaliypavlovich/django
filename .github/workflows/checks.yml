@@ -34,4 +34,4 @@ jobs:
 
       - name: Run Pytest suite
         run: |
-          pytest --create-db --disable-warnings shop/
+          cd shop/ && pytest --create-db --disable-warnings
